@@ -3,6 +3,7 @@ import React from 'react';
 import ContactForm from './ContactForm.jsx';
 import AddressForm from './AddressForm.jsx';
 import ItemForm from './ItemForm.jsx';
+import PaymentForm from './PaymentForm.jsx';
 
 
 class App extends React.Component {
@@ -73,10 +74,14 @@ class App extends React.Component {
         <ItemForm 
           quantity={this.state.quantity}
           onChange={this.handleTotalChange}
-          // updateTotal={this.updateTotal}
           total={this.state.total}
         /> 
 
+        <PaymentForm 
+          ccNum={this.state.ccNum}
+          exp={this.state.exp}
+          onChange={this.handleInputChange}
+        /> 
       </div>
     )
   }

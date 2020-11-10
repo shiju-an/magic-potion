@@ -49,7 +49,6 @@ const AddressForm = ({
         id='stateInput'
         name='state'
         onChange={onChange}
-        value={state}
       >
         {States.map(state => (
           <option value={state}>{state}</option>
