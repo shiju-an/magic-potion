@@ -1,7 +1,8 @@
 import React from 'react';
 
 const ContactForm = ({
-  firstName, lastName, email, phone, onChange
+  firstName, lastName, email, phone, onChange,
+  validateName
 }) => (
   <div>
     <form>
@@ -15,6 +16,7 @@ const ContactForm = ({
         placeholder='First Name'
         value={firstName}
         onChange={onChange}
+        onBlur={validateName}
       />
 
       <label>
@@ -27,6 +29,7 @@ const ContactForm = ({
         placeholder='Last Name'
         value={lastName}
         onChange={onChange}
+        onBlur={validateName}
       />
 
       <label>

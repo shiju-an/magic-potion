@@ -25,8 +25,22 @@ class App extends React.Component {
       exp: '',
     };
 
+    this.validateName = this.validateName.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleTotalChange = this.handleTotalChange.bind(this);
+  };
+
+  validateName(e) {
+    let value = e.target.value;
+    let isValid = false;
+    let validChars = /^[ a-zA-Z\-\’]+$/;
+
+    if (value.match(validChars)) {
+      isValid = true; 
+    }  
+    else {  
+      console.log('Please enter a valid name');
+    };
   };
 
   handleInputChange(e) {
@@ -60,6 +74,7 @@ class App extends React.Component {
           email={this.state.email}
           phone={this.state.phone}
           onChange={this.handleInputChange}
+          validateName={this.validateName}
           /> 
 
         <AddressForm 
