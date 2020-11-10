@@ -1,10 +1,12 @@
 const path = require('path');
+const DIST_DIR = path.resolve(__dirname, 'client', 'dist');
+const SRC_DIR = path.resolve(__dirname, 'client', 'src', 'App.js');
 
 module.exports = {
-  entry: './src/App.js',
+  entry: SRC_DIR,
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'public'),
+    path: DIST_DIR,
   },
 
   module: {
@@ -16,6 +18,6 @@ module.exports = {
   },
 
   devServer: {
-    contentBase: path.resolve(__dirname, 'public')
+    contentBase: DIST_DIR
   }
 };
