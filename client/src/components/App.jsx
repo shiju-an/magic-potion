@@ -28,6 +28,7 @@ class App extends React.Component {
     this.validateName = this.validateName.bind(this);
     this.validatePhoneNumber = this.validatePhoneNumber.bind(this);
     this.validateState = this.validateState.bind(this);
+    this.validateZip = this.validateZip.bind(this);
 
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleTotalChange = this.handleTotalChange.bind(this);
@@ -64,6 +65,15 @@ class App extends React.Component {
 
     if(value === '') { 
       console.log('Please enter a valid state');
+    };
+  };
+
+  validateZip(e) {
+    let value = e.target.value;
+    let validChars = /(^\d{5}$)|(^\d{5}-\d{4}$)/;
+
+    if(!value.match(validChars)) { 
+      console.log('Please enter a valid zip code');
     };
   };
 
@@ -110,6 +120,7 @@ class App extends React.Component {
           zip={this.state.zip}
           onChange={this.handleInputChange}
           validateState={this.validateState}
+          validateZip={this.validateZip}
         /> 
 
         <ItemForm 
