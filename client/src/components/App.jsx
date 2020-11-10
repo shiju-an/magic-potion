@@ -26,6 +26,7 @@ class App extends React.Component {
     };
 
     this.validateName = this.validateName.bind(this);
+    this.validatePhoneNumber = this.validatePhoneNumber.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleTotalChange = this.handleTotalChange.bind(this);
   };
@@ -40,6 +41,19 @@ class App extends React.Component {
     }  
     else {  
       console.log('Please enter a valid name');
+    };
+  };
+
+  validatePhoneNumber(e) {
+    let value = e.target.value;
+    let isValid = false;
+    let validChars = /^\+?([0-9]{2})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4})$/;
+
+    if(value.match(validChars)) {
+      isValid = true; 
+    }  
+    else {  
+      console.log('Please enter a valid phone number');
     };
   };
 
@@ -75,6 +89,7 @@ class App extends React.Component {
           phone={this.state.phone}
           onChange={this.handleInputChange}
           validateName={this.validateName}
+          validatePhoneNumber={this.validatePhoneNumber}
           /> 
 
         <AddressForm 

@@ -2,7 +2,7 @@ import React from 'react';
 
 const ContactForm = ({
   firstName, lastName, email, phone, onChange,
-  validateName
+  validateName, validatePhoneNumber
 }) => (
   <div>
     <form>
@@ -54,6 +54,7 @@ const ContactForm = ({
         placeholder='Phone Number'
         value={phone}
         onChange={onChange}
+        onBlur={validatePhoneNumber}
       />      
     </form>
   </div>
