@@ -52,65 +52,6 @@ const ContactForm = ({
         value={phone}
         onChange={onChange}
       />      
-       
-    {/* 
-      <label>
-        Address Line 1: 
-      </label>
-      <input 
-        id='addressLineOneInput'
-        name='addressLineOne'
-        type='text' 
-        placeholder='Address Line 1'
-        value=''
-      />
-
-      <label>
-        Address Line 2: 
-      </label>
-      <input 
-        id='addressLineTwoInput'
-        name='addressLineTwo'
-        type='text' 
-        placeholder='Address Line 2'
-        value=''
-      />    
-
-      <label>
-        City:
-      </label>
-      <input 
-        id='cityInput'
-        name='city'
-        type='text' 
-        placeholder='City'
-        value=''
-      />    
-
-      <label>
-        State:   
-      </label>
-      <select 
-        id='stateInput'
-        name='state'
-        type='' 
-        placeholder='State'
-      >
-        <option value='NY'>NY</option>
-        <option value='CA'>CA</option>
-        <option value='NC'>NC</option>
-      </select>
-
-      <label>
-        Zip Code:
-      </label>
-      <input 
-        id='zipCodeInput'
-        name='zipCode'
-        type='text' 
-        placeholder='Zip Code'
-        value=''
-      />             */}
     </form>
   </div>
 );
