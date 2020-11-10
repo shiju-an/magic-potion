@@ -2,6 +2,7 @@ import React from 'react';
 
 import ContactForm from './ContactForm.jsx';
 import AddressForm from './AddressForm.jsx';
+import ItemForm from './ItemForm.jsx';
 
 
 class App extends React.Component {
@@ -18,12 +19,13 @@ class App extends React.Component {
       state: '',
       zip: '',
       quantity: '',
-      total: '',
+      total: '0',
       ccNum: '',
       exp: '',
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleTotalChange = this.handleTotalChange.bind(this);
   };
 
   handleInputChange(e) {
@@ -33,6 +35,17 @@ class App extends React.Component {
     this.setState({
       [name]: value
     });
+  };
+
+  handleTotalChange(e) {
+      let name = e.target.name;
+      let value = e.target.value;
+  
+      this.setState({
+        [name]: value
+      }, () => {
+        this.setState({total: 49.99 * this.state.quantity})
+      });
   };
 
   render() {
@@ -47,6 +60,7 @@ class App extends React.Component {
           phone={this.state.phone}
           onChange={this.handleInputChange}
           /> 
+
         <AddressForm 
           street1={this.state.street1}
           street2={this.state.street2}
@@ -55,6 +69,14 @@ class App extends React.Component {
           zip={this.state.zip}
           onChange={this.handleInputChange}
         /> 
+
+        <ItemForm 
+          quantity={this.state.quantity}
+          onChange={this.handleTotalChange}
+          // updateTotal={this.updateTotal}
+          total={this.state.total}
+        /> 
+
       </div>
     )
   }
