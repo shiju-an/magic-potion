@@ -22,7 +22,8 @@ class App extends React.Component {
       quantity: '',
       total: '0',
       ccNum: '',
-      exp: '',
+      expMM: '',
+      expYY: '',
     };
 
     this.validateName = this.validateName.bind(this);
@@ -30,6 +31,7 @@ class App extends React.Component {
     this.validateState = this.validateState.bind(this);
     this.validateZip = this.validateZip.bind(this);
     this.validateCCNum = this.validateCCNum.bind(this);
+    this.validateExp = this.validateExp.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleTotalChange = this.handleTotalChange.bind(this);
   };
@@ -102,8 +104,33 @@ class App extends React.Component {
     } else {
       console.log('Please enter a valid credit card number');
     }
-    
+
     console.log(cardType)
+  };
+
+  validateExp(e) {
+    let value = e.target.value;
+    let validMonths = /^(0[1-9]|1[0-2])$/;
+    let validYears = /\d{2}/
+    let today = new Date();
+    let expDate = new Date(); 
+    expDate.setFullYear('20' + this.state.expYY, this.state.expMM - 1, 1);
+      
+    if (e.target.name === 'expMM') {
+      if (!value.match(validMonths)) {
+        console.log('Please enter a valid month');
+      };
+    };
+    
+    if (e.target.name === 'expYY') {
+      if (!value.match(validYears)) {
+        console.log('Please enter a valid year');
+      };
+    };
+
+    if (this.state.expYY && this.state.expMM && expDate < today) {
+      console.log('This card is expired. Please enter a valid card.');
+    };
   };
 
   handleInputChange(e) {
@@ -160,9 +187,11 @@ class App extends React.Component {
 
         <PaymentForm 
           ccNum={this.state.ccNum}
-          exp={this.state.exp}
+          expMM={this.state.expMM}
+          expYY={this.state.expYY}
           onChange={this.handleInputChange}
           validateCCNum={this.validateCCNum}
+          validateExp={this.validateExp}
         /> 
       </div>
     )

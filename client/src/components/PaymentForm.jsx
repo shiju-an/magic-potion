@@ -1,8 +1,8 @@
 import React from 'react';
 
 const PaymentForm = ({
-  ccNum, exp, onChange,
-  validateCCNum
+  ccNum, expMM, expYY, onChange,
+  validateCCNum, validateExp  
 }) => (
   <div>
     <form>
@@ -23,12 +23,23 @@ const PaymentForm = ({
         Expiration Date: 
       </label>
       <input 
-        id='expInput'
-        name='exp'
+        id='expMMInput'
+        name='expMM'
         type='text' 
-        placeholder='Expiration Date'
-        value={exp}
+        placeholder='MM'
+        value={expMM}
         onChange={onChange}
+        onBlur={validateExp}
+      /> 
+      / 20 
+      <input 
+        id='expYYInput'
+        name='expYY'
+        type='text' 
+        placeholder='YY'
+        value={expYY}
+        onChange={onChange}
+        onBlur={validateExp}
       />
     </form>
   </div>
