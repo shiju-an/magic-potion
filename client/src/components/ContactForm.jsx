@@ -51,7 +51,8 @@ const ContactForm = ({
         placeholder='Phone Number'
         value={phone}
         onChange={onChange}
-      />       
+      />      
+       
     {/* 
       <label>
         Address Line 1: 

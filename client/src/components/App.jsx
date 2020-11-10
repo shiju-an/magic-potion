@@ -1,6 +1,8 @@
 import React from 'react';
 
 import ContactForm from './ContactForm.jsx';
+import AddressForm from './AddressForm.jsx';
+
 
 class App extends React.Component {
   constructor(props) {
@@ -45,6 +47,14 @@ class App extends React.Component {
           phone={this.state.phone}
           onChange={this.handleInputChange}
           /> 
+        <AddressForm 
+          street1={this.state.street1}
+          street2={this.state.street2}
+          city={this.state.city}
+          state={this.state.state}
+          zip={this.state.zip}
+          onChange={this.handleInputChange}
+        /> 
       </div>
     )
   }
