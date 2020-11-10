@@ -96,3 +96,13 @@ export default App;
 //address - address 1, 2, city, state, zip 
 //item - quantity + total
 //payment - credit card, expiration date 
+
+//validation base 
+//validate names = strings only
+//validate email = email only
+//validate number = number + 10 digits only
+//address = strings only
+//zip = number + five digits only
+//credit card number = number +  max numbers only
+//expiration date = MM/YY only 
+
