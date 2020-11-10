@@ -29,7 +29,7 @@ class App extends React.Component {
     this.validatePhoneNumber = this.validatePhoneNumber.bind(this);
     this.validateState = this.validateState.bind(this);
     this.validateZip = this.validateZip.bind(this);
-
+    this.validateCCNum = this.validateCCNum.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleTotalChange = this.handleTotalChange.bind(this);
   };
@@ -75,6 +75,35 @@ class App extends React.Component {
     if(!value.match(validChars)) { 
       console.log('Please enter a valid zip code');
     };
+  };
+
+  validateCCNum(e) {
+    let value = e.target.value;
+    let validAmex = /^(?:3[47][0-9]{13})$/;
+    let validVisa = /^(?:4[0-9]{12}(?:[0-9]{3})?)$/;
+    let validMaster = /^(?:5[1-5][0-9]{14})$/;
+    let validDiscover = /^(?:6(?:011|5[0-9][0-9])[0-9]{12})$/;
+    let validDinerClub = /^(?:3(?:0[0-5]|[68][0-9])[0-9]{11})$/;
+    let validJCB = /^(?:(?:2131|1800|35\d{3})\d{11})$/;
+    let cardType = null;
+
+    if (value.match(validAmex)) {
+      cardType = "American Express";
+    } else if (value.match(validVisa)) {
+      cardType = "Visa";
+    } else if (value.match(validMaster)) {
+      cardType = "Master";
+    } else if (value.match(validDiscover)) {
+      cardType = "Discover";
+    } else if (value.match(validDinerClub)) {
+      cardType = "Diner Club"; 
+    } else if (value.match(validJCB)) {
+      cardType = "JCB";
+    } else {
+      console.log('Please enter a valid credit card number');
+    }
+    
+    console.log(cardType)
   };
 
   handleInputChange(e) {
@@ -133,6 +162,7 @@ class App extends React.Component {
           ccNum={this.state.ccNum}
           exp={this.state.exp}
           onChange={this.handleInputChange}
+          validateCCNum={this.validateCCNum}
         /> 
       </div>
     )
