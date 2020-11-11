@@ -22,9 +22,10 @@ const saveOrder = (newOrder, callback) => {
     //if not, don't do anything
   //promisify?
 
-  //test insert
   let { firstName, lastName, quantity, total, expMM, expYY } = newOrder;
   let expDate = `${expMM}/${expYY}`
+  let date = new Date();
+  let currentMonth = date.getMonth() + 1;
 
   let checkUserSql = `SELECT id FROM users WHERE first_name = ? AND last_name = ? AND exp_date = ? LIMIT 1`;
 
@@ -33,6 +34,9 @@ const saveOrder = (newOrder, callback) => {
   let insertUserSql = `INSERT INTO users (first_name, last_name, exp_date) VALUES (?, ?, ?)`;
 
   let selectId = 'SELECT id FROM users ORDER BY id DESC LIMIT 1';
+
+  let checkQuantitySql = 
+  `SELECT SUM(quantity) totalQuantity FROM transactions INNER JOIN users ON transactions.userId = users.id WHERE transactions.userId = ? AND MONTH(order_date) = ?`;
 
   db.query(checkUserSql, [firstName, lastName, expDate], (err, res) => {
     if (err) {
@@ -61,20 +65,30 @@ const saveOrder = (newOrder, callback) => {
         };
       });
     } else {
-      console.log('only add transaction if whatever order isnt greater than 3 by selected user');
+      //have id
+      //innerjoin --> select all quantity where current month = this month
+        //if this quantity + current quantity given is greater than 3
+          //don't post --> exit 
+        //otherwise, post the new transaction only
+      db.query(checkQuantitySql, [res[0].id, currentMonth], (err, totalQty) => {
+        if (err) {
+          console.log(err)
+          console.log('error at checking total quantity');
+        } 
+        else if (totalQty[0].totalQuantity + parseInt(quantity) > 3) {
+          console.log('cannot place order, orders reached for month')
+        } else {
+          db.query(insertOrderSql, [quantity, total, res[0].id], (err) => {
+            if(err){
+              console.log(err, 'final error');
+            } else {
+              console.log('we hit a success and need to insert and did it');
+            } 
+          });
+        };
+      });
     }
   })
-  
-    // .then(res => {
-    //   if (res > 0) {
-    //     console.log('hit');
-    //   } else {
-    //     console.log('test');
-    //   };
-    // })
-    // .catch(err => {
-    //   console.log(err, 'error promises lol');
-    // })
 };
 
 const updateOrder = (id, callback) => {
