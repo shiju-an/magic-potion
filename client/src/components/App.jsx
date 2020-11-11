@@ -24,6 +24,19 @@ class App extends React.Component {
       ccNum: '',
       expMM: '',
       expYY: '',
+      isValidName: false,
+      isValidEmail: false,
+      isValidPhone: false,
+      isValidStreet1: false,
+      isValidCity: false,
+      isValidState: false,
+      isValidZip: false,
+      isValidQuantity: false,
+      isValidTotal: false,
+      isValidCcNum: false,
+      isValidExpMM: false,
+      isValidExpYY: false,
+      isDisabled: false
     };
 
     this.validateName = this.validateName.bind(this);
@@ -34,16 +47,16 @@ class App extends React.Component {
     this.validateExp = this.validateExp.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleTotalChange = this.handleTotalChange.bind(this);
+    this.isDisabled = this.isDisabled.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   };
 
   validateName(e) {
     let value = e.target.value;
-    let isValid = false;
     let validChars = /^[ a-zA-Z\-\’]+$/;
 
     if (value.match(validChars)) {
-      isValid = true; 
+      this.setState({isValidName: true});
     }  
     else {  
       console.log('Please enter a valid name');
@@ -52,13 +65,11 @@ class App extends React.Component {
 
   validatePhoneNumber(e) {
     let value = e.target.value;
-    let isValid = false;
     let validChars = /^\+?([0-9]{2})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4})$/;
 
     if(value.match(validChars)) {
-      isValid = true; 
-    }  
-    else {  
+      this.setState({isValidPhone: true});    
+    } else {  
       console.log('Please enter a valid phone number');
     };
   };
@@ -68,14 +79,18 @@ class App extends React.Component {
 
     if(value === '') { 
       console.log('Please enter a valid state');
-    };
+    } else {
+      this.setState({isValidState: true});    
+    }
   };
 
   validateZip(e) {
     let value = e.target.value;
     let validChars = /(^\d{5}$)|(^\d{5}-\d{4}$)/;
 
-    if(!value.match(validChars)) { 
+    if(value.match(validChars)) { 
+      this.setState({isValidZip: true});    
+    } else {
       console.log('Please enter a valid zip code');
     };
   };
@@ -89,19 +104,26 @@ class App extends React.Component {
     let validDinerClub = /^(?:3(?:0[0-5]|[68][0-9])[0-9]{11})$/;
     let validJCB = /^(?:(?:2131|1800|35\d{3})\d{11})$/;
     let cardType = null;
+    let isValid = this.setState({isValidCcNum: true});    
 
     if (value.match(validAmex)) {
       cardType = "American Express";
+      isValid;
     } else if (value.match(validVisa)) {
       cardType = "Visa";
+      isValid;
     } else if (value.match(validMaster)) {
       cardType = "Master";
+      isValid;
     } else if (value.match(validDiscover)) {
       cardType = "Discover";
+      isValid;
     } else if (value.match(validDinerClub)) {
       cardType = "Diner Club"; 
+      isValid;
     } else if (value.match(validJCB)) {
       cardType = "JCB";
+      isValid;
     } else {
       console.log('Please enter a valid credit card number');
     }
@@ -118,19 +140,33 @@ class App extends React.Component {
     expDate.setFullYear('20' + this.state.expYY, this.state.expMM - 1, 1);
       
     if (e.target.name === 'expMM') {
-      if (!value.match(validMonths)) {
+      if (value.match(validMonths)) {
+        this.setState({isValidExpMM: true});    
+      } else {
         console.log('Please enter a valid month');
       };
     };
     
     if (e.target.name === 'expYY') {
-      if (!value.match(validYears)) {
+      if (value.match(validYears)) {
+        this.setState({isValidExpYY: true});  
+      } else {  
         console.log('Please enter a valid year');
       };
     };
 
     if (this.state.expYY && this.state.expMM && expDate < today) {
       console.log('This card is expired. Please enter a valid card.');
+    };
+  };
+
+  isDisabled() {
+    console.log('disabled');
+    let {isValidName, isValidEmail, isValidPhone, isValidStreet1, isValidCity, isValidState, isValidZip, isValidQuantity, isValidTotal, isValidCcNum, isValidExpMM, isValidExpYY } = this.state;
+
+    if (isValidName && isValidEmail && isValidPhone && isValidStreet && isValidCity && isValidState && isValidZip && isValidQuantity && isValidTotal && isValidCcNum && isValidExpMM && isValidExpYY) {
+      console.log('enabled');
+      this.setState({isDisabled: true});
     };
   };
 
@@ -208,7 +244,8 @@ class App extends React.Component {
         /> 
 
         <button 
-          onClick={this.handleSubmit}
+          // onClick={this.handleSubmit}
+          disabled={!this.state.isDisabled}
         >
           Order
         </button>
