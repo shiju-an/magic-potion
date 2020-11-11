@@ -2,7 +2,8 @@ import React from 'react';
 import States from '../../../states.js'
 
 const AddressForm = ({
-  street1, street2, city, state, zip, onChange
+  street1, street2, city, state, zip, onChange,
+  validateState, validateZip
 }) => (
   <div>
     <form>
@@ -49,8 +50,9 @@ const AddressForm = ({
         id='stateInput'
         name='state'
         onChange={onChange}
-        value={state}
+        onBlur={validateState}
       >
+        <option value=''> </option>
         {States.map(state => (
           <option value={state}>{state}</option>
         ))}
@@ -66,6 +68,7 @@ const AddressForm = ({
         placeholder='Zip Code'
         value={zip}
         onChange={onChange}
+        onBlur={validateZip}
       />            
     </form>
   </div>

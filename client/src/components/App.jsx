@@ -3,6 +3,7 @@ import React from 'react';
 import ContactForm from './ContactForm.jsx';
 import AddressForm from './AddressForm.jsx';
 import ItemForm from './ItemForm.jsx';
+import PaymentForm from './PaymentForm.jsx';
 
 
 class App extends React.Component {
@@ -21,11 +22,115 @@ class App extends React.Component {
       quantity: '',
       total: '0',
       ccNum: '',
-      exp: '',
+      expMM: '',
+      expYY: '',
     };
 
+    this.validateName = this.validateName.bind(this);
+    this.validatePhoneNumber = this.validatePhoneNumber.bind(this);
+    this.validateState = this.validateState.bind(this);
+    this.validateZip = this.validateZip.bind(this);
+    this.validateCCNum = this.validateCCNum.bind(this);
+    this.validateExp = this.validateExp.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleTotalChange = this.handleTotalChange.bind(this);
+  };
+
+  validateName(e) {
+    let value = e.target.value;
+    let isValid = false;
+    let validChars = /^[ a-zA-Z\-\’]+$/;
+
+    if (value.match(validChars)) {
+      isValid = true; 
+    }  
+    else {  
+      console.log('Please enter a valid name');
+    };
+  };
+
+  validatePhoneNumber(e) {
+    let value = e.target.value;
+    let isValid = false;
+    let validChars = /^\+?([0-9]{2})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4})$/;
+
+    if(value.match(validChars)) {
+      isValid = true; 
+    }  
+    else {  
+      console.log('Please enter a valid phone number');
+    };
+  };
+
+  validateState(e) {
+    let value = e.target.value;
+
+    if(value === '') { 
+      console.log('Please enter a valid state');
+    };
+  };
+
+  validateZip(e) {
+    let value = e.target.value;
+    let validChars = /(^\d{5}$)|(^\d{5}-\d{4}$)/;
+
+    if(!value.match(validChars)) { 
+      console.log('Please enter a valid zip code');
+    };
+  };
+
+  validateCCNum(e) {
+    let value = e.target.value;
+    let validAmex = /^(?:3[47][0-9]{13})$/;
+    let validVisa = /^(?:4[0-9]{12}(?:[0-9]{3})?)$/;
+    let validMaster = /^(?:5[1-5][0-9]{14})$/;
+    let validDiscover = /^(?:6(?:011|5[0-9][0-9])[0-9]{12})$/;
+    let validDinerClub = /^(?:3(?:0[0-5]|[68][0-9])[0-9]{11})$/;
+    let validJCB = /^(?:(?:2131|1800|35\d{3})\d{11})$/;
+    let cardType = null;
+
+    if (value.match(validAmex)) {
+      cardType = "American Express";
+    } else if (value.match(validVisa)) {
+      cardType = "Visa";
+    } else if (value.match(validMaster)) {
+      cardType = "Master";
+    } else if (value.match(validDiscover)) {
+      cardType = "Discover";
+    } else if (value.match(validDinerClub)) {
+      cardType = "Diner Club"; 
+    } else if (value.match(validJCB)) {
+      cardType = "JCB";
+    } else {
+      console.log('Please enter a valid credit card number');
+    }
+
+    console.log(cardType)
+  };
+
+  validateExp(e) {
+    let value = e.target.value;
+    let validMonths = /^(0[1-9]|1[0-2])$/;
+    let validYears = /\d{2}/
+    let today = new Date();
+    let expDate = new Date(); 
+    expDate.setFullYear('20' + this.state.expYY, this.state.expMM - 1, 1);
+      
+    if (e.target.name === 'expMM') {
+      if (!value.match(validMonths)) {
+        console.log('Please enter a valid month');
+      };
+    };
+    
+    if (e.target.name === 'expYY') {
+      if (!value.match(validYears)) {
+        console.log('Please enter a valid year');
+      };
+    };
+
+    if (this.state.expYY && this.state.expMM && expDate < today) {
+      console.log('This card is expired. Please enter a valid card.');
+    };
   };
 
   handleInputChange(e) {
@@ -59,6 +164,8 @@ class App extends React.Component {
           email={this.state.email}
           phone={this.state.phone}
           onChange={this.handleInputChange}
+          validateName={this.validateName}
+          validatePhoneNumber={this.validatePhoneNumber}
           /> 
 
         <AddressForm 
@@ -68,15 +175,24 @@ class App extends React.Component {
           state={this.state.state}
           zip={this.state.zip}
           onChange={this.handleInputChange}
+          validateState={this.validateState}
+          validateZip={this.validateZip}
         /> 
 
         <ItemForm 
           quantity={this.state.quantity}
           onChange={this.handleTotalChange}
-          // updateTotal={this.updateTotal}
           total={this.state.total}
         /> 
 
+        <PaymentForm 
+          ccNum={this.state.ccNum}
+          expMM={this.state.expMM}
+          expYY={this.state.expYY}
+          onChange={this.handleInputChange}
+          validateCCNum={this.validateCCNum}
+          validateExp={this.validateExp}
+        /> 
       </div>
     )
   }
@@ -91,3 +207,13 @@ export default App;
 //address - address 1, 2, city, state, zip 
 //item - quantity + total
 //payment - credit card, expiration date 
+
+//validation base 
+//validate names = strings only
+//validate email = email only
+//validate number = number + 10 digits only
+//address = strings only
+//zip = number + five digits only
+//credit card number = number +  max numbers only
+//expiration date = MM/YY only 
+
