@@ -14,6 +14,7 @@ CREATE TABLE users (
   city VARCHAR(500),
   us_state VARCHAR(500),
   zip VARCHAR(500), 
+  phone VARCHAR(500),
   cc_num VARCHAR(500), 
   exp_date VARCHAR(500), 
   PRIMARY KEY(id)
