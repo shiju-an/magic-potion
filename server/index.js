@@ -17,16 +17,15 @@ app.get('/api/magic/:id', (req, res) => {
 });
 
 app.post('/api/magic', (req, res) => {
-  // console.log(req.body);
   Controller.saveOrder(req, res);
 });
 
 app.patch('/api/magic', (req, res) => {
-  console.log('patch');
+  Controller.updateOrder(req, res);
 });
 
 app.delete('/api/magic/:id', (req, res) => {
-  console.log('delete');
+  Controller.deleteOrder(req, res);
 });
 
 app.use((req, res, next) => {
