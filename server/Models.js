@@ -17,7 +17,14 @@ const saveOrder = (newOrder, callback) => {
 };
 
 const updateOrder = (id, callback) => {
-  console.log(id);
+  db.query(
+    `UPDATE transactions SET fulfilled = true WHERE id = ${id}`, (err, data) => {
+      if (err) {
+        callback(err);
+      } else {
+        console.log(data.affectedRows + ' ' + "record(s) updated");
+      };
+    });
 };
 
 const deleteOrder = (id, callback) => {
@@ -26,7 +33,7 @@ const deleteOrder = (id, callback) => {
       if (err) {
         callback(err);
       } else {
-        console.log(data.affectedRows + '' + "record(s) deleted");
+        console.log(data.affectedRows + ' ' + "record(s) deleted");
       };
     });
 };
