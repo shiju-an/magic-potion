@@ -4,7 +4,6 @@ const getOrder = (id, callback) => {
   db.query(
     `SELECT * FROM transactions INNER JOIN users ON transactions.userId = users.id WHERE transactions.id = ${id}`, (err, data) => {
       if (err) {
-        console.log('error at db model thing', err);
         callback(err);
       } else {
         callback(null, data[0]);
@@ -23,15 +22,13 @@ const saveOrder = (newOrder, callback) => {
 
 const updateOrder = (id, callback) => {
   db.query(
-    `UPDATE transactions SET fulfilled = true WHERE id = ${id}`, (err, data) => {
+    `UPDATE transactions SET fulfilled = true WHERE fulfilled = false and id = ${id}`, (err, data) => {
       if (err) {
         callback(err);
       } else {
-        console.log(data.affectedRows + ' ' + "record(s) updated");
         callback(null, data);
       };
     });
-    //need to address updating same row
 };
 
 const deleteOrder = (id, callback) => {
@@ -40,12 +37,10 @@ const deleteOrder = (id, callback) => {
       if (err) {
         callback(err);
       } else {
-        console.log(data.affectedRows + ' ' + "record(s) deleted");
+        callback(null, data);
       };
     });
 };
-
-//do same for update for delete
 
 module.exports = {
   getOrder,

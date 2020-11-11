@@ -5,8 +5,10 @@ const getOrder = (req, res) => {
   Models.getOrder(id, (err, data) => {
     if (err) {
       console.log('error', err);
+    } else if (data.length === 0) {
+        console.log('404')
     } else {
-      console.log('okay', data);
+        console.log('okay', data);
     };
   });
 };
@@ -27,12 +29,10 @@ const updateOrder = (req, res) => {
   Models.updateOrder(id, (err, data) => {
     if (err) {
       console.log('error', err);
-    } else {
-      if (data.affectedRows === 0) {
+    } else if (data.affectedRows === 0) {
         console.log('404'); //no rows updated
-      } else {
-        console.log('success update');
-      };
+    } else {
+      console.log('success update');
     };
   });
 };
@@ -42,6 +42,8 @@ const deleteOrder = (req, res) => {
   Models.deleteOrder(id, (err, data) => {
     if (err) {
       console.log('error', err);
+    } else if (data.affectedRows === 0) {
+        console.log('404'); //no rows deleted
     } else {
       console.log('deleted');
     };
