@@ -4,7 +4,7 @@ const db = require('../db');
 
 const getOrder = (id, callback) => {
   db.query(
-    `SELECT * FROM transactions INNER JOIN users ON transactions.userId = users.id WHERE transactions.id = ${id}`, (err, data) => {
+    `SELECT * FROM transactions INNER JOIN users ON transactions.userId = users.id WHERE transactions.id = ?`, [id], (err, data) => {
       if (err) {
         callback(err);
       } else {
@@ -30,7 +30,6 @@ const saveOrder = (newOrder, callback) => {
   let checkQuantitySql = 
   `SELECT SUM(quantity) totalQuantity FROM transactions INNER JOIN users ON transactions.userId = users.id WHERE transactions.userId = ? AND MONTH(order_date) = ?`;
 
-  //do i cahnge all console.log errors to callback errors?
   db.query(checkUserSql, [firstName, lastName, expDate], (err, res) => {
     if (err) {
       callback(err);
@@ -84,7 +83,7 @@ const saveOrder = (newOrder, callback) => {
 
 const updateOrder = (id, callback) => {
   db.query(
-    `UPDATE transactions SET fulfilled = true WHERE fulfilled = false and id = ${id}`, (err, data) => {
+    `UPDATE transactions SET fulfilled = true WHERE fulfilled = false and id = ?`, [id], (err, data) => {
       if (err) {
         callback(err);
       } else {
@@ -95,7 +94,7 @@ const updateOrder = (id, callback) => {
 
 const deleteOrder = (id, callback) => {
   db.query(
-    `DELETE FROM transactions WHERE id = ${id}`, (err, data) => {
+    `DELETE FROM transactions WHERE id = ?`, [id], (err, data) => {
       if (err) {
         callback(err);
       } else {
