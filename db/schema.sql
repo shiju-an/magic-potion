@@ -9,12 +9,12 @@ CREATE TABLE users (
   first_name VARCHAR(500),
   last_name VARCHAR(500),
   email VARCHAR(500),
+  phone VARCHAR(500),
   street1 VARCHAR(500),
   street2 VARCHAR(500),
   city VARCHAR(500),
   us_state VARCHAR(500),
   zip VARCHAR(500), 
-  phone VARCHAR(500),
   cc_num VARCHAR(500), 
   exp_date VARCHAR(500), 
   PRIMARY KEY(id)

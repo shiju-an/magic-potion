@@ -1,7 +1,7 @@
 const mysql = require('mysql');
-const mysqlConfig = require('./config.js');
+const config = require('./config.js');
 
-const connection = mysql.createConnection(mysqlConfig);
+const connection = mysql.createConnection(config);
 
 connection.connect((err) => {
   if(err) {
@@ -12,4 +12,3 @@ connection.connect((err) => {
 });
 
 module.exports = connection;
-
