@@ -7,7 +7,7 @@ const getOrder = (id, callback) => {
         console.log('error at db model thing', err);
         callback(err);
       } else {
-        callback(null, data);
+        callback(null, data[0]);
       };
     });
 };
@@ -19,8 +19,6 @@ const saveOrder = (newOrder, callback) => {
     //if user exists, check if transaction quantities < 3 and if transaction quantities + current quantities < 3
       //if so, insert transaction with existing user id 
     //if not, don't do anything
-
-  
 };
 
 const updateOrder = (id, callback) => {
@@ -30,8 +28,10 @@ const updateOrder = (id, callback) => {
         callback(err);
       } else {
         console.log(data.affectedRows + ' ' + "record(s) updated");
+        callback(null, data);
       };
     });
+    //need to address updating same row
 };
 
 const deleteOrder = (id, callback) => {
@@ -44,6 +44,8 @@ const deleteOrder = (id, callback) => {
       };
     });
 };
+
+//do same for update for delete
 
 module.exports = {
   getOrder,

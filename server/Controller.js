@@ -28,7 +28,11 @@ const updateOrder = (req, res) => {
     if (err) {
       console.log('error', err);
     } else {
-      console.log('updated');
+      if (data.affectedRows === 0) {
+        console.log('404'); //no rows updated
+      } else {
+        console.log('success update');
+      };
     };
   });
 };
