@@ -3,10 +3,14 @@ const getOrder = (req, res) => {
   console.log(id);
 }
 
-// const saveOrder = (req, res) => {
+const saveOrder = (req, res) => {
+  const { firstName, lastName } = req.body;
+  console.log(firstName, lastName);
+};
 
-// }
+
 
 module.exports = {
-  getOrder
+  getOrder,
+  saveOrder
 }

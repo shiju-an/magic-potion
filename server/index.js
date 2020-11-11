@@ -8,7 +8,7 @@ const port = 3000;
 
 app.use(express.static(DIST_DIR));
 
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(bodyParser.json());
 
@@ -17,7 +17,8 @@ app.get('/api/magic/:id', (req, res) => {
 });
 
 app.post('/api/magic', (req, res) => {
-  console.log('post');
+  // console.log(req.body);
+  Controller.saveOrder(req, res);
 });
 
 app.patch('/api/magic', (req, res) => {
