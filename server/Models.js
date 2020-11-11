@@ -1,7 +1,5 @@
 const db = require('../db');
 
-//need to destructure + add as param for query (all)
-
 const getOrder = (id, callback) => {
   db.query(
     `SELECT * FROM transactions INNER JOIN users ON transactions.userId = users.id WHERE transactions.id = ?`, [id], (err, data) => {
@@ -14,28 +12,30 @@ const getOrder = (id, callback) => {
 };
 
 const saveOrder = (newOrder, callback) => {
-  let { firstName, lastName, quantity, total, expMM, expYY } = newOrder;
+  let { firstName, lastName, email, phone, street1, street2, city, state, zip, quantity, total, ccNum, expMM, expYY } = newOrder;
   let expDate = `${expMM}/${expYY}`
   let date = new Date();
   let currentMonth = date.getMonth() + 1;
 
-  let checkUserSql = `SELECT id FROM users WHERE first_name = ? AND last_name = ? AND exp_date = ? LIMIT 1`;
+  //EDIT CHECKUSER SQL AND INSERTORDERSQL AND INSERTUSERSQL PARAMS
+
+  let checkUserSql = `SELECT id FROM users WHERE first_name = ? AND last_name = ? AND email = ? AND phone = ? LIMIT 1`;
 
   let insertOrderSql = `INSERT INTO transactions (quantity, total, fulfilled, order_date, userId) VALUES (?, ?, false, curdate(), ?)`;
 
-  let insertUserSql = `INSERT INTO users (first_name, last_name, exp_date) VALUES (?, ?, ?)`;
+  let insertUserSql = `INSERT INTO users (first_name, last_name, email, phone, street1, street2, city, us_state, zip, cc_num, exp_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
 
   let selectId = 'SELECT id FROM users ORDER BY id DESC LIMIT 1';
 
   let checkQuantitySql = 
   `SELECT SUM(quantity) totalQuantity FROM transactions INNER JOIN users ON transactions.userId = users.id WHERE transactions.userId = ? AND MONTH(order_date) = ?`;
 
-  db.query(checkUserSql, [firstName, lastName, expDate], (err, res) => {
+  db.query(checkUserSql, [firstName, lastName, email, phone], (err, res) => {
     if (err) {
       callback(err);
     } else if (res.length === 0) {
       console.log('before insert user');
-      db.query(insertUserSql, [firstName, lastName, expDate], (err) => {
+      db.query(insertUserSql, [firstName, lastName, email, phone, street1, street2, city, state, zip, ccNum, expDate], (err) => {
         if(err) {
           callback(err);
         } else {

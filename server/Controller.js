@@ -30,7 +30,7 @@ const saveOrder = (req, res) => {
       res.status(201).send(JSON.stringify(data.insertId));
     };
   });
-}; //coming in as error --> totalquantity doesnt exist before total quantity reqched
+}; 
 
 const updateOrder = (req, res) => {
   const { id } = req.params;
