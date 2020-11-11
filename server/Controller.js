@@ -22,7 +22,7 @@ const saveOrder = (req, res) => {
     if (err) {
       console.log(err, 'save error');
       res.status(404).send();
-    } else if (data[0].totalQuantity) {
+    } else if (data[0] && data[0].totalQuantity) {
       console.log('total quantity reached for the month');
       res.status(404).send();
     } else {
@@ -30,7 +30,7 @@ const saveOrder = (req, res) => {
       res.status(201).send(JSON.stringify(data.insertId));
     };
   });
-};
+}; //coming in as error --> totalquantity doesnt exist before total quantity reqched
 
 const updateOrder = (req, res) => {
   const { id } = req.params;

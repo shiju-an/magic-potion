@@ -34,6 +34,7 @@ class App extends React.Component {
     this.validateExp = this.validateExp.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleTotalChange = this.handleTotalChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   };
 
   validateName(e) {
@@ -153,6 +154,18 @@ class App extends React.Component {
       });
   };
 
+  handleSubmit(e) {
+    e.preventDefault();
+
+    let { firstName, lastName, email, phone, street1, street2, city, state, zip, quantity, total, ccNum, expMM, expYY } = this.state; 
+
+    axios.post('/api/magic', { firstName, lastName, email, phone, street1, street2, city, state, zip, quantity, total, ccNum, expMM, expYY }) 
+      .then((result => {
+        console.log(result, 'added');
+      }))
+      .catch(err => console.log('error post ', err))
+  }
+
   render() {
     return (
       <div>
@@ -193,6 +206,12 @@ class App extends React.Component {
           validateCCNum={this.validateCCNum}
           validateExp={this.validateExp}
         /> 
+
+        <button 
+          onClick={this.handleSubmit}
+        >
+          Order
+        </button>
       </div>
     )
   }
