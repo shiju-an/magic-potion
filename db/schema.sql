@@ -14,7 +14,7 @@ CREATE TABLE users (
   city VARCHAR(500),
   us_state VARCHAR(500),
   zip VARCHAR(500), 
-  ccNum VARCHAR(500), 
+  cc_num VARCHAR(500), 
   exp_date VARCHAR(500), 
   PRIMARY KEY(id)
 );
@@ -23,7 +23,8 @@ CREATE TABLE transactions (
   id INT NOT NULL AUTO_INCREMENT,
   quantity INT,
   total VARCHAR(500),
-  order_date DATE,
+  order_date DATE, 
+  fulfilled BOOLEAN,
   userId INT,
   PRIMARY KEY (id),
   FOREIGN KEY (userId) REFERENCES users(id)

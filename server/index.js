@@ -2,13 +2,18 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const DIST_DIR = path.resolve(__dirname, '..', 'client', 'dist');
+const bodyParser= require('body-parser');
 const Controller = require('./Controller.js');
 const port = 3000;
 
 app.use(express.static(DIST_DIR));
 
+app.use(bodyParser.urlencoded({ extended: false }));
+
+app.use(bodyParser.json());
+
 app.get('/api/magic/:id', (req, res) => {
-  console.log('get');
+  Controller.getOrder(req, res);
 });
 
 app.post('/api/magic', (req, res) => {
