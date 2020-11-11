@@ -3,7 +3,7 @@ import React from 'react';
 // const quantities = [1, 2, 3];
 
 const ItemForm = ({
-  quantity, total, onChange
+  quantity, total, onChange, validateQuantity
 }) => (
   <div>
       <label>
@@ -13,6 +13,7 @@ const ItemForm = ({
         id='quantityInput'
         name='quantity'
         onChange={onChange}
+        onBlur={validateQuantity}
       >
         {[0, 1, 2, 3].map(quantity => (
           <option value={quantity}>{quantity}</option>
