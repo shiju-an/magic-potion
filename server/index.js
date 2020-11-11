@@ -12,21 +12,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(bodyParser.json());
 
-app.get('/api/magic/:id', (req, res) => {
-  Controller.getOrder(req, res);
-});
+app.get('/api/magic/:id', Controller.getOrder);
 
-app.post('/api/magic', (req, res) => {
-  Controller.saveOrder(req, res);
-});
+app.post('/api/magic', Controller.saveOrder);
 
-app.patch('/api/magic', (req, res) => {
-  Controller.updateOrder(req, res);
-});
+app.patch('/api/magic', Controller.updateOrder);
 
-app.delete('/api/magic/:id', (req, res) => {
-  Controller.deleteOrder(req, res);
-});
+app.delete('/api/magic/:id', Controller.deleteOrder);
 
 app.use((req, res, next) => {
   res.redirect("/")
