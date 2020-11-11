@@ -11,3 +11,34 @@ app.use((req, res, next) => {
 });
 
 app.listen(port, () => console.log(`do you come in, port ${port}`));
+
+/*routes
+
+get
+/api/magic 
+all 
+/api/magic/<uid> 
+on success: data (all
+on failure: 404 resource not found
+
+post
+/api/magic
+--> verify client not exceeding max 3 potions per month
+on success: 201 created 
+{ id: uid }
+on failure: error
+
+patch
+/api/magic
+{
+"id": uid, "fulfilled": bool
+}
+on success: 200 || 204 "resource updated successfully"
+on failure: 404 "resource not found"
+
+delete
+/api/magic/<uid>
+on success: 200 || 204 "resource deleted successfully"
+on failure: 404 "resource not found"
+
+*/
