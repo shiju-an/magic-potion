@@ -6,6 +6,22 @@ const port = 3000;
 
 app.use(express.static(DIST_DIR));
 
+app.get('/api/magic/:id', (req, res) => {
+  console.log('get');
+});
+
+app.post('/api/magic', (req, res) => {
+  console.log('post');
+});
+
+app.patch('/api/magic', (req, res) => {
+  console.log('patch');
+});
+
+app.delete('/api/magic/:id', (req, res) => {
+  console.log('delete');
+});
+
 app.use((req, res, next) => {
   res.redirect("/")
 });
