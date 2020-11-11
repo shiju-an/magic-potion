@@ -14,14 +14,6 @@ const getOrder = (id, callback) => {
 };
 
 const saveOrder = (newOrder, callback) => {
-  //check if user exists in user table
-    //if not, insert user and transaction data
-  //else user exists in table
-    //if user exists, check if transaction quantities < 3 and if transaction quantities + current quantities < 3
-      //if so, insert transaction with existing user id 
-    //if not, don't do anything
-  //promisify?
-
   let { firstName, lastName, quantity, total, expMM, expYY } = newOrder;
   let expDate = `${expMM}/${expYY}`
   let date = new Date();
@@ -38,26 +30,28 @@ const saveOrder = (newOrder, callback) => {
   let checkQuantitySql = 
   `SELECT SUM(quantity) totalQuantity FROM transactions INNER JOIN users ON transactions.userId = users.id WHERE transactions.userId = ? AND MONTH(order_date) = ?`;
 
+  //do i cahnge all console.log errors to callback errors?
   db.query(checkUserSql, [firstName, lastName, expDate], (err, res) => {
     if (err) {
-      console.log(err);
+      callback(err);
     } else if (res.length === 0) {
       console.log('before insert user');
       db.query(insertUserSql, [firstName, lastName, expDate], (err) => {
         if(err) {
-          console.log(err, 'error');
+          callback(err);
         } else {
           console.log('before select new id')
           db.query(selectId, (err, id) => {
             if (err) {
-              console.log('error');
+              callback(err);
             } else {
               console.log('before insert order');
-              db.query(insertOrderSql, [quantity, total, id[0].id], (err) => {
+              db.query(insertOrderSql, [quantity, total, id[0].id], (err, data) => {
                 if(err){
-                  console.log(err, 'final error');
+                  callback(err);
                 } else {
                   console.log('how did this work');
+                  callback(null, data);
                 } 
               });
             }
@@ -65,24 +59,21 @@ const saveOrder = (newOrder, callback) => {
         };
       });
     } else {
-      //have id
-      //innerjoin --> select all quantity where current month = this month
-        //if this quantity + current quantity given is greater than 3
-          //don't post --> exit 
-        //otherwise, post the new transaction only
       db.query(checkQuantitySql, [res[0].id, currentMonth], (err, totalQty) => {
         if (err) {
-          console.log(err)
+          callback(err);
           console.log('error at checking total quantity');
         } 
         else if (totalQty[0].totalQuantity + parseInt(quantity) > 3) {
           console.log('cannot place order, orders reached for month')
+          callback(null, totalQty);
         } else {
-          db.query(insertOrderSql, [quantity, total, res[0].id], (err) => {
+          db.query(insertOrderSql, [quantity, total, res[0].id], (err, data) => {
             if(err){
-              console.log(err, 'final error');
+              callback(err);
             } else {
               console.log('we hit a success and need to insert and did it');
+              callback(null, data);
             } 
           });
         };
