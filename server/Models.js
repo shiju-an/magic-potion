@@ -21,7 +21,14 @@ const updateOrder = (id, callback) => {
 };
 
 const deleteOrder = (id, callback) => {
-  console.log(id);
+  db.query(
+    `DELETE FROM transactions WHERE id = ${id}`, (err, data) => {
+      if (err) {
+        callback(err);
+      } else {
+        console.log(data.affectedRows + '' + "record(s) deleted");
+      };
+    });
 };
 
 module.exports = {
