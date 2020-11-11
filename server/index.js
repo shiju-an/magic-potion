@@ -16,7 +16,7 @@ app.get('/api/magic/:id', Controller.getOrder);
 
 app.post('/api/magic', Controller.saveOrder);
 
-app.patch('/api/magic', Controller.updateOrder);
+app.patch('/api/magic/:id', Controller.updateOrder);
 
 app.delete('/api/magic/:id', Controller.deleteOrder);
 
