@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const DIST_DIR = path.resolve(__dirname, '..', 'client', 'dist');
+const Controller = require('./Controller.js');
 const port = 3000;
 
 app.use(express.static(DIST_DIR));
@@ -32,7 +33,7 @@ app.listen(port, () => console.log(`do you come in, port ${port}`));
 
 get
 /api/magic 
-all 
+all orders --> list of all orders
 /api/magic/<uid> 
 on success: data (all
 on failure: 404 resource not found
