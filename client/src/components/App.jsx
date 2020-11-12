@@ -228,13 +228,14 @@ class App extends React.Component {
   render() {
     let {isValidName, isValidPhone, isValidState, isValidZip, isValidQuantity, isValidTotal, isValidCcNum, isValidExpMM, isValidExpYY } = this.state;
     let enableOrder = isValidName && isValidPhone && isValidState && isValidZip && isValidQuantity && isValidTotal && isValidCcNum && isValidExpMM && isValidExpYY;
+    
     return (
       <div>
         <h1>magic potion</h1>
         <h3>bubble bubble boil and trouble</h3>
         <ContactForm 
           firstName={this.state.firstName}
-          lastName={this.state.lastName}
+          lastName={this.state.lastName}git s
           email={this.state.email}
           phone={this.state.phone}
           onChange={this.handleInputChange}
