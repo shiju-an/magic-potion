@@ -265,7 +265,7 @@ class App extends React.Component {
   }
 
   render() {
-    let { isValidName, isValidPhone, isValidState, isValidZip, isValidQuantity, isValidTotal, isValidCcNum, isValidExpMM, isValidExpYY, currentPage } = this.state;
+    let { currentPage } = this.state;
 
     if (currentPage === 0) {
       return <ItemForm 
@@ -312,7 +312,6 @@ class App extends React.Component {
         validateCCNum={this.validateCCNum}
         validateExp={this.validateExp}
         handleBack={this.handleBack}
-        handleNext={this.handleNext}
         handleSubmit={this.handleSubmit}
         disableSubmit={this.disableSubmit}
       /> 

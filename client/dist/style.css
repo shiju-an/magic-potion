@@ -6,7 +6,7 @@
 }
 
 .wrapper {
-  margin: 75px auto;
+  margin: 0 auto;
 }
 
 /*product page*/
@@ -82,17 +82,19 @@ img {
   border: 3px dotted #B0AAEA
 }
 
+/*form pages*/
 .formContainer {
   position: relative;
   width: 600px;
-  height: 600px;
+  height: 750px;
   /* left: 364px;
   top: 75px; */
+  top: 5%;
   border: 1px solid #B0AAEA;
   display: table-cell;
   vertical-align: middle;
   text-align: center;
-  margin: auto auto;
+  margin: 50px auto;
 }
 
 #title {
@@ -189,7 +191,7 @@ img {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 15px;
   position: absolute;
-  left: 255px;
+  right: 100px;
   bottom: 45px;
 }
 
