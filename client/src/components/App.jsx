@@ -237,81 +237,81 @@ class App extends React.Component {
   render() {
     let { isValidName, isValidPhone, isValidState, isValidZip, isValidQuantity, isValidTotal, isValidCcNum, isValidExpMM, isValidExpYY, currentPage } = this.state;
 
-    if (currentPage === 0) {
-      return <ItemForm 
-                quantity={this.state.quantity}
-                total={this.state.total}
-                onChange={this.handleTotalChange}
-                onClick={this.handleNext}
-                validateQuantity={this.validateQuantity}
-              /> 
-    } else if (currentPage === 1
-       // && isValidQuantity && isValidTotal --> if get disable to work, then dont need to validate here and cause issues with render
-       ) {
-      return <ContactForm 
-                firstName={this.state.firstName}
-                lastName={this.state.lastName}git s
-                email={this.state.email}
-                phone={this.state.phone}
-                onChange={this.handleInputChange}
-                validateName={this.validateName}
-                validatePhoneNumber={this.validatePhoneNumber}
-              />  
-    } else {
-      return (<div>why do i suck</div>)
-    }
+    // if (currentPage === 0) {
+    //   return <ItemForm 
+    //             quantity={this.state.quantity}
+    //             total={this.state.total}
+    //             onChange={this.handleTotalChange}
+    //             onClick={this.handleNext}
+    //             validateQuantity={this.validateQuantity}
+    //           /> 
+    // } else if (currentPage === 1
+    //    // && isValidQuantity && isValidTotal --> if get disable to work, then dont need to validate here and cause issues with render
+    //    ) {
+    //   return <ContactForm 
+    //             firstName={this.state.firstName}
+    //             lastName={this.state.lastName}git s
+    //             email={this.state.email}
+    //             phone={this.state.phone}
+    //             onChange={this.handleInputChange}
+    //             validateName={this.validateName}
+    //             validatePhoneNumber={this.validatePhoneNumber}
+    //           />  
+    // } else {
+    //   return (<div>why do i suck</div>)
+    // }
 
 
-  //   return (
-  //     <div>
-  //       {/* <h1>magic potion</h1>
-  //       <h3>bubble bubble boil and trouble</h3> */}
+    return (
+      <div>
+        {/* <h1>magic potion</h1>
+        <h3>bubble bubble boil and trouble</h3> */}
 
-  //       {/* <ContactForm 
-  //         firstName={this.state.firstName}
-  //         lastName={this.state.lastName}git s
-  //         email={this.state.email}
-  //         phone={this.state.phone}
-  //         onChange={this.handleInputChange}
-  //         validateName={this.validateName}
-  //         validatePhoneNumber={this.validatePhoneNumber}
-  //         />  */}
+        <ContactForm 
+          firstName={this.state.firstName}
+          lastName={this.state.lastName}git s
+          email={this.state.email}
+          phone={this.state.phone}
+          onChange={this.handleInputChange}
+          validateName={this.validateName}
+          validatePhoneNumber={this.validatePhoneNumber}
+          /> 
 
-  //       {/* <AddressForm 
-  //         street1={this.state.street1}
-  //         street2={this.state.street2}
-  //         city={this.state.city}
-  //         state={this.state.state}
-  //         zip={this.state.zip}
-  //         onChange={this.handleInputChange}
-  //         validateState={this.validateState}
-  //         validateZip={this.validateZip}
-  //       />  */}
+        {/* <AddressForm 
+          street1={this.state.street1}
+          street2={this.state.street2}
+          city={this.state.city}
+          state={this.state.state}
+          zip={this.state.zip}
+          onChange={this.handleInputChange}
+          validateState={this.validateState}
+          validateZip={this.validateZip}
+        />  */}
 
-  //       <ItemForm 
-  //         quantity={this.state.quantity}
-  //         total={this.state.total}
-  //         onChange={this.handleTotalChange}
-  //         validateQuantity={this.validateQuantity}
-  //       /> 
-        
-  //       {/* <PaymentForm 
-  //         ccNum={this.state.ccNum}
-  //         expMM={this.state.expMM}
-  //         expYY={this.state.expYY}
-  //         onChange={this.handleInputChange}
-  //         validateCCNum={this.validateCCNum}
-  //         validateExp={this.validateExp}
-  //       /> 
+        {/* <ItemForm 
+          quantity={this.state.quantity}
+          total={this.state.total}
+          onChange={this.handleTotalChange}
+          validateQuantity={this.validateQuantity}
+        /> 
+         */}
+        {/* <PaymentForm 
+          ccNum={this.state.ccNum}
+          expMM={this.state.expMM}
+          expYY={this.state.expYY}
+          onChange={this.handleInputChange}
+          validateCCNum={this.validateCCNum}
+          validateExp={this.validateExp}
+        /> 
 
-  //       <button 
-  //         onClick={this.handleSubmit}
-  //         disabled={!this.isDisabled()}
-  //       >
-  //         Order
-  //       </button> */}
-  //     </div>
-  //   )
+        <button 
+          onClick={this.handleSubmit}
+          disabled={!this.isDisabled()}
+        >
+          Order
+        </button> */}
+      </div>
+    )
   }
 
 }

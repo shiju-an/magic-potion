@@ -4,7 +4,10 @@ const ContactForm = ({
   firstName, lastName, email, phone, onChange,
   validateName, validatePhoneNumber
 }) => (
-  <div>
+  <div className="formContainer">
+    <div className="titleContainer">
+      <h2>USER INFO</h2>>
+    </div>
     <form>
       <label>
         First Name: 

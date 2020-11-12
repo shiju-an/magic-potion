@@ -76,5 +76,21 @@ img {
   position: absolute;
   z-index: 20;
   border: 3px dotted #B0AAEA
+}
 
+.formContainer {
+  position: absolute;
+  width: 713px;
+  height: 750px;
+  left: 364px;
+  top: 75px;
+  border: 1px solid green
+}
+
+.titleContainer {
+  width: 528px;
+  height: 83px;
+  left: 456px;
+  top: 115px;
+  border: 1px solid yellow 
 }
