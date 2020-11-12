@@ -267,7 +267,7 @@ class App extends React.Component {
         {/* <h1>magic potion</h1>
         <h3>bubble bubble boil and trouble</h3> */}
 
-        <ContactForm 
+        {/* <ContactForm 
           firstName={this.state.firstName}
           lastName={this.state.lastName}git s
           email={this.state.email}
@@ -275,9 +275,9 @@ class App extends React.Component {
           onChange={this.handleInputChange}
           validateName={this.validateName}
           validatePhoneNumber={this.validatePhoneNumber}
-          /> 
+          />  */}
 
-        {/* <AddressForm 
+        <AddressForm 
           street1={this.state.street1}
           street2={this.state.street2}
           city={this.state.city}
@@ -286,7 +286,7 @@ class App extends React.Component {
           onChange={this.handleInputChange}
           validateState={this.validateState}
           validateZip={this.validateZip}
-        />  */}
+        /> 
 
         {/* <ItemForm 
           quantity={this.state.quantity}
