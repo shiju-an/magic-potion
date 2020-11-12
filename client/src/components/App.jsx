@@ -24,6 +24,8 @@ class App extends React.Component {
       ccNum: '',
       expMM: '',
       expYY: '',
+      // alerts: [
+      //   'Please enter a valid quantity',],
       isValidName: false,
       // isValidEmail: false,
       isValidPhone: false,
@@ -32,7 +34,7 @@ class App extends React.Component {
       isValidState: false,
       isValidZip: false,
       isValidQuantity: false,
-      isValidTotal: false,
+      // isValidTotal: false,
       isValidCcNum: false,
       isValidExpMM: false,
       isValidExpYY: false,
@@ -65,7 +67,7 @@ class App extends React.Component {
     }  
     else {  
       this.setState({isValidName: false});
-      console.log('Please enter a valid name');
+      alert('Please enter a valid name');
     };
   };
 
@@ -77,7 +79,7 @@ class App extends React.Component {
       this.setState({isValidPhone: true});    
     } else {  
       this.setState({isValidPhone: false});    
-      console.log('Please enter a valid phone number');
+      alert('Please enter a valid phone number');
     };
   };
 
@@ -86,7 +88,7 @@ class App extends React.Component {
 
     if (value === '') { 
       this.setState({isValidState: false});    
-      console.log('Please enter a valid state');
+      alert('Please enter a valid state');
     } else {
       this.setState({isValidState: true});    
     }
@@ -100,7 +102,7 @@ class App extends React.Component {
       this.setState({isValidZip: true});    
     } else {
       this.setState({isValidZip: false});    
-      console.log('Please enter a valid zip code');
+      alert('Please enter a valid zip code');
     };
   };
 
@@ -109,11 +111,9 @@ class App extends React.Component {
 
     if (value === '0' || value === '') {
       this.setState({isValidQuantity: false});
-      this.setState({isValidTotal: false});
-      console.log('Please enter a valid quantity');
+      alert('Please enter a valid quantity');
     } else {
       this.setState({isValidQuantity: true});
-      this.setState({isValidTotal: true});
     }
   }
 
@@ -148,7 +148,7 @@ class App extends React.Component {
       isValid;
     } else {
       this.setState({isValidCcNum: false})
-      console.log('Please enter a valid credit card number');
+      alert('Please enter a valid credit card number');
     }
 
     console.log(cardType)
@@ -167,7 +167,7 @@ class App extends React.Component {
         this.setState({isValidExpMM: true});    
       } else {
         this.setState({isValidExpMM: false});    
-        console.log('Please enter a valid month');
+        alert('Please enter a valid month');
       };
     };
     
@@ -176,22 +176,22 @@ class App extends React.Component {
         this.setState({isValidExpYY: true});  
       } else {  
         this.setState({isValidExpYY: false});  
-        console.log('Please enter a valid year');
+        alert('Please enter a valid year');
       };
     };
 
     if (this.state.expYY && this.state.expMM && expDate < today) {
       this.setState({isValidExpYY: false});  
-      console.log('This card is expired. Please enter a valid card.');
+      alert('This card is expired. Please enter a valid card.');
     };
   };
 
   //change to disableSubmit
   disableSubmit() {
     console.log('disabled');
-    let {isValidName, isValidPhone, isValidState, isValidZip, isValidQuantity, isValidTotal, isValidCcNum, isValidExpMM, isValidExpYY } = this.state;
+    let {isValidName, isValidPhone, isValidState, isValidZip, isValidQuantity, isValidCcNum, isValidExpMM, isValidExpYY } = this.state;
 
-    if (isValidName && isValidPhone && isValidState && isValidZip && isValidQuantity && isValidTotal && isValidCcNum && isValidExpMM && isValidExpYY) {
+    if (isValidName && isValidPhone && isValidState && isValidZip && isValidQuantity && isValidCcNum && isValidExpMM && isValidExpYY) {
       console.log('enabled');
       return false;
     };
@@ -199,9 +199,9 @@ class App extends React.Component {
   };
 
   disableNext() {
-    let {currentPage, isValidName, isValidPhone, isValidState, isValidZip, isValidQuantity, isValidTotal} = this.state;
+    let {currentPage, isValidName, isValidPhone, isValidState, isValidZip, isValidQuantity } = this.state;
     console.log('disabled');
-    if (currentPage === 0 && isValidQuantity && isValidTotal) {
+    if (currentPage === 0 && isValidQuantity) {
       console.log('enabled');
       return false;
     }
