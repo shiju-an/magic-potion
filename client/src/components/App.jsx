@@ -228,12 +228,13 @@ class App extends React.Component {
   render() {
     let {isValidName, isValidPhone, isValidState, isValidZip, isValidQuantity, isValidTotal, isValidCcNum, isValidExpMM, isValidExpYY } = this.state;
     let enableOrder = isValidName && isValidPhone && isValidState && isValidZip && isValidQuantity && isValidTotal && isValidCcNum && isValidExpMM && isValidExpYY;
-    
+
     return (
       <div>
-        <h1>magic potion</h1>
-        <h3>bubble bubble boil and trouble</h3>
-        <ContactForm 
+        {/* <h1>magic potion</h1>
+        <h3>bubble bubble boil and trouble</h3> */}
+
+        {/* <ContactForm 
           firstName={this.state.firstName}
           lastName={this.state.lastName}git s
           email={this.state.email}
@@ -241,9 +242,9 @@ class App extends React.Component {
           onChange={this.handleInputChange}
           validateName={this.validateName}
           validatePhoneNumber={this.validatePhoneNumber}
-          /> 
+          />  */}
 
-        <AddressForm 
+        {/* <AddressForm 
           street1={this.state.street1}
           street2={this.state.street2}
           city={this.state.city}
@@ -252,7 +253,7 @@ class App extends React.Component {
           onChange={this.handleInputChange}
           validateState={this.validateState}
           validateZip={this.validateZip}
-        /> 
+        />  */}
 
         <ItemForm 
           quantity={this.state.quantity}
@@ -261,7 +262,7 @@ class App extends React.Component {
           validateQuantity={this.validateQuantity}
         /> 
 
-        <PaymentForm 
+        {/* <PaymentForm 
           ccNum={this.state.ccNum}
           expMM={this.state.expMM}
           expYY={this.state.expYY}
@@ -275,7 +276,7 @@ class App extends React.Component {
           disabled={!this.isDisabled()}
         >
           Order
-        </button>
+        </button> */}
       </div>
     )
   }
