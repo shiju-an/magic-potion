@@ -2,7 +2,7 @@ import React from 'react';
 
 const ContactForm = ({
   firstName, lastName, email, phone, onChange,
-  validateName, validatePhoneNumber
+  validateName, validatePhoneNumber, disableNext, handleBack, handleNext
 }) => (
   <div className="formContainer">
     <h2 id="title">USER INFO</h2>
@@ -78,12 +78,21 @@ const ContactForm = ({
 
     <div className="bottomArrows">
       <button 
-        id="next">Next</button>
+        id="next"
+        onClick={handleNext}
+        disabled={disableNext()}
+      >
+        Next
+      </button>
     </div>
-    
+
     <div className="bottomArrows">
       <button 
-        id="back">Back</button>
+        id="back"
+        onClick={handleBack}
+      >
+        Back
+      </button>
     </div>
   
   </div>

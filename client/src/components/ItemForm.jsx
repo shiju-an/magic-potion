@@ -3,7 +3,7 @@ import potion from '../media/potion.png';
 
 
 const ItemForm = ({
-  quantity, total, onChange, validateQuantity, onClick
+  quantity, total, onChange, validateQuantity, disableNext, handleNext
 }) => (
   <div className='productContainer'>
 
@@ -48,7 +48,11 @@ const ItemForm = ({
       <div className="itemContainer">
         <button 
           id="continueToInfo"
-          onClick={onClick}>Continue</button>
+          onClick={handleNext}
+          disabled={disableNext()}  
+        >
+          Continue
+        </button>
       </div>
     </div>
 

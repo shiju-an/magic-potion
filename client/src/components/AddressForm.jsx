@@ -3,7 +3,7 @@ import States from '../../../states.js'
 
 const AddressForm = ({
   street1, street2, city, state, zip, onChange,
-  validateState, validateZip
+  validateState, validateZip, disableNext, handleBack, handleNext
 }) => (
   <div className="formContainer">
     <h2 id="title">SHIPPING INFO</h2>
@@ -106,13 +106,23 @@ const AddressForm = ({
 
     <div className="bottomArrows">
       <button 
-        id="next">Next</button>
+        id="next"
+        onClick={handleNext}
+        disabled={disableNext()}
+      >
+        Next
+      </button>
     </div>
 
     <div className="bottomArrows">
       <button 
-        id="back">Back</button>
+        id="back"
+        onClick={handleBack}
+      >
+        Back
+      </button>
     </div>
+
   </div>
 );
 

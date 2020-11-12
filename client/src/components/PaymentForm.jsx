@@ -2,7 +2,7 @@ import React from 'react';
 
 const PaymentForm = ({
   ccNum, expMM, expYY, onChange,
-  validateCCNum, validateExp, handleSubmit, isDisabled
+  validateCCNum, validateExp, handleBack, handleNext, handleSubmit, disableSubmit
 }) => (
   <div className="formContainer">
     <h2 id="title">PAYMENT INFO</h2>
@@ -57,19 +57,27 @@ const PaymentForm = ({
 
     <div className="bottomArrows">
       <button 
-        id="next">Next</button>
+        id="next"
+        onClick={handleNext}
+      >
+        Next
+      </button>
     </div>
 
     <div className="bottomArrows">
       <button 
-        id="back">Back</button>
+        id="back"
+        onClick={handleBack}
+      >
+        Back
+      </button>
     </div>
     
     <div className="bottomArrows">
       <button 
         id="submit"
         onClick={handleSubmit}
-        disabled={isDisabled()}
+        disabled={disableSubmit()}
       >
         Order
       </button>
