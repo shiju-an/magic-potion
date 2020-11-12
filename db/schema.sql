@@ -1,8 +1,8 @@
-DROP DATABASE IF EXISTS potionsales;
+-- DROP DATABASE IF EXISTS potionsales;
 
-CREATE DATABASE potionsales;
+-- CREATE DATABASE potionsales;
 
-USE potionsales;
+-- USE potionsales;
 
 CREATE TABLE users (
   id INT NOT NULL AUTO_INCREMENT,
