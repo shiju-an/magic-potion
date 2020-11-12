@@ -21,10 +21,9 @@ const saveOrder = (req, res) => {
   Models.saveOrder(newOrder, (err, data) => {
     if (err) {
       console.log(err, 'save error');
-      res.status(404).send();
+      res.status(400).send();
     } else if (data[0] && data[0].totalQuantity) {
-      console.log('total quantity reached for the month');
-      res.status(404).send();
+      res.status(401).send();
     } else {
       console.log(JSON.stringify(data))
       res.status(201).send(JSON.stringify(data.insertId));

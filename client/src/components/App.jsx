@@ -259,9 +259,18 @@ class App extends React.Component {
 
     axios.post('/api/magic', { firstName, lastName, email, phone, street1, street2, city, state, zip, quantity, total, ccNum, expMM, expYY }) 
       .then((result => {
-        console.log(result, 'added');
+        alert("Your order has been placed!");
       }))
-      .catch(err => console.log('error post ', err))
+      .catch(err => {
+        if (err.response.status === 400) {
+          console.log(err.response, typeof err.response)
+          alert("Error: Unable to Process Order")
+        } else if (err.response.status === 401 ) {
+          alert("Error: Magic potion order may not exceed maximum quantity")
+        } else {
+          console.log(err);
+        };
+      });
   }
 
   render() {
