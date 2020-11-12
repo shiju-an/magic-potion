@@ -10,11 +10,19 @@ module.exports = {
   },
 
   module: {
-    rules: [{
-      loader: 'babel-loader',
-      test: /\.js$|jsx/,
-      exclude: /node_modules/
-    }]
+    rules: [
+      {
+        loader: 'babel-loader',
+        test: /\.js$|jsx/,
+        exclude: /node_modules/
+      },
+      {
+        test: /\.(jpg|png)$/,
+        use: {
+          loader: 'url-loader',
+        },
+      }
+    ]
   },
 
   devServer: {

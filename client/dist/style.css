@@ -13,30 +13,68 @@
   top: 5%;
   display: flex;
   justify-content: space-around;
+  padding-left: 1%;
+  padding-right: 1%;
 }
 
 .itemContainer {
   width: 90%;
   height: 10%;
-  padding: 10% 5%;
-  border: 1px solid blue;
+  margin: 10% 5%;
   text-align: center;
+  align-items: center;
 }
 
 #productImage {
   width: 50%;
   padding: 40px;
-  border: 1px solid red;
+  align-items: center;
+  display: flex;
+  justify-content: center;
 }
 
 #productForm {
   width: 40%;
   padding: 40px;
-  border: 1px solid red;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around
 }
 
-/* this is a header tag */
-#price {
-  border: 1px solid red;
+#price, #quantityInput, #totalInput, #continueToInfo {
   font-size: 24px;
+  margin: 3% 5%;
+}
+
+#quantityInput {
+  width: 15%;
+  height: 15%;
+  text-align-last: center;
+  border: 1px solid #706D87;
+}
+
+#continueToInfo {
+  border: 1px solid #706D87;
+  background-color: #ffffff;
+  padding: 2% 9%;
+  border-radius: 25px;
+}
+
+img {
+  width: 300px;
+  height: 400px;
+  overflow: auto;
+}
+
+.imageBackground {
+  width: 712px;
+  height: 670px;
+  background-color: #F8F8FA;
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  position: absolute;
+  z-index: 20;
+  border: 3px dotted #B0AAEA
+
 }
