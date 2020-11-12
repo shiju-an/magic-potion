@@ -1,10 +1,9 @@
 import React from 'react';
 import potion from '../media/potion.png';
 
-// const quantities = [1, 2, 3];
 
 const ItemForm = ({
-  quantity, total, onChange, validateQuantity
+  quantity, total, onChange, validateQuantity, onClick
 }) => (
   <div className='productContainer'>
 
@@ -47,7 +46,9 @@ const ItemForm = ({
       </div>
       
       <div className="itemContainer">
-        <button id="continueToInfo">Continue</button>
+        <button 
+          id="continueToInfo"
+          onClick={onClick}>Continue</button>
       </div>
     </div>
 
