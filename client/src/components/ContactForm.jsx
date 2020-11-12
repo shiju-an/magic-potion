@@ -9,6 +9,7 @@ const ContactForm = ({
     <div className="titleContainer"></div>
 
     <div className="formBox">
+      
       <form>
         <div className="formField">
           <label className="formDesc">
@@ -78,6 +79,11 @@ const ContactForm = ({
     <div className="bottomArrows">
       <button 
         id="next">Next</button>
+    </div>
+    
+    <div className="bottomArrows">
+      <button 
+        id="back">Back</button>
     </div>
   
   </div>

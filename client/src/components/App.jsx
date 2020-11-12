@@ -277,7 +277,7 @@ class App extends React.Component {
           validatePhoneNumber={this.validatePhoneNumber}
           />  */}
 
-        <AddressForm 
+        {/* <AddressForm 
           street1={this.state.street1}
           street2={this.state.street2}
           city={this.state.city}
@@ -286,25 +286,26 @@ class App extends React.Component {
           onChange={this.handleInputChange}
           validateState={this.validateState}
           validateZip={this.validateZip}
-        /> 
+        />  */}
 
         {/* <ItemForm 
           quantity={this.state.quantity}
           total={this.state.total}
           onChange={this.handleTotalChange}
           validateQuantity={this.validateQuantity}
-        /> 
-         */}
-        {/* <PaymentForm 
+        />  */}
+
+        <PaymentForm 
           ccNum={this.state.ccNum}
           expMM={this.state.expMM}
           expYY={this.state.expYY}
           onChange={this.handleInputChange}
           validateCCNum={this.validateCCNum}
           validateExp={this.validateExp}
+          onClick={handleSubmit}git s
+          disabled={isDisabled}
         /> 
-
-        <button 
+        {/* <button 
           onClick={this.handleSubmit}
           disabled={!this.isDisabled()}
         >

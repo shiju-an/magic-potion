@@ -5,6 +5,10 @@
   background-color: #ffffff;
 }
 
+.wrapper {
+  margin: 75px auto;
+}
+
 /*product page*/
 .productContainer {
   position: absolute;
@@ -82,12 +86,13 @@ img {
   position: relative;
   width: 600px;
   height: 600px;
-  left: 364px;
-  top: 75px;
+  /* left: 364px;
+  top: 75px; */
   border: 1px solid #B0AAEA;
   display: table-cell;
   vertical-align: middle;
   text-align: center;
+  margin: auto auto;
 }
 
 #title {
@@ -110,6 +115,7 @@ img {
   position: relative;
   width: 349px;
   height: 412px;  
+  border: 1px solid black
 }
 
 .formField {
@@ -171,6 +177,22 @@ img {
   bottom: 50px;
 }
 
+#submit {
+  background-color: #B0AAEA;
+  color: white;
+  font-weight: bold;
+  font-size: 24px;
+  width: 100px;
+  height: 50px;
+  border: 1px solid #706D87;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 15px;
+  position: absolute;
+  left: 255px;
+  bottom: 45px;
+}
+
 .inlineFormInput {
   display: flex;
   flex-direction: row;
@@ -221,5 +243,24 @@ img {
   width: 90px;
   height: 21px;
   text-align: left;
-
 }
+
+#expMMInput, #expYYInput {
+  width: 60px;
+  height: 21px;
+  text-align: left;
+}
+
+#expMMInput {
+  margin-right: 10px;
+}
+
+#expYYInput {
+  margin-left: 5px;
+}
+
+#expDateInput {
+  display: inline-flex;
+  flex-direction: row;
+}
+
