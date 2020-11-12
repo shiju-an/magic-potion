@@ -79,18 +79,80 @@ img {
 }
 
 .formContainer {
-  position: absolute;
-  width: 713px;
-  height: 750px;
+  position: relative;
+  width: 600px;
+  height: 600px;
   left: 364px;
   top: 75px;
-  border: 1px solid green
+  border: 1px solid #B0AAEA;
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+
+#title {
+  position: relative;
+  top: 80px;
+  text-align: center; 
 }
 
 .titleContainer {
   width: 528px;
   height: 83px;
-  left: 456px;
-  top: 115px;
-  border: 1px solid yellow 
+  margin: 24px auto;
+  background-color: rgba(176, 170, 234, 0.7);
+  opacity: 0.7;
+  text-align: center; 
+}
+
+.formBox {
+  display: inline-block;
+  position: relative;
+  width: 349px;
+  height: 412px;  
+}
+
+.formField {
+  position: relative;
+  width: 269px;
+  height: 68px;
+  margin: 15px auto;
+  text-align: left;
+  display: table;
+  vertical-align: middle;
+}
+
+.formDesc {
+  display: inline-flex;
+  flex-direction: column-reverse;
+  justify-content: space-between;
+  text-align: right;
+  margin: 10px 0;
+  font-size: 13px;
+  opacity: 5;
+}
+
+.formInput {
+  text-align: left;
+  width: 269px;
+  height: 21px;
+}
+
+.bottomArrows {
+  width: 171px;
+  height: 59px;
+}
+
+#next {
+  font-weight: bold;
+  width: 78.62px;
+  height: 39px;
+  border: 1px solid #706D87;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 30px;
+  background-color: #ffffff;
+  position: absolute;
+  right: 100px;
+  bottom: 50px;
 }
