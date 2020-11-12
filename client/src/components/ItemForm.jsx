@@ -1,5 +1,4 @@
 import React from 'react';
-import potion from '../media/potion.png';
 
 
 const ItemForm = ({
@@ -9,7 +8,7 @@ const ItemForm = ({
 
     <div id="productImage">
       <div className="imageBackground">
-        <img src = {potion} alt="potion" />
+        <img src='https://jw-challenges.s3.us-east-2.amazonaws.com/potion.png' alt="potion" />
       </div>
 
     </div>
