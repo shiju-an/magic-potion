@@ -4,7 +4,8 @@ CREATE DATABASE heroku_e98030fc61e2c0f;
 
 USE heroku_e98030fc61e2c0f;
 
--- for dev
+-- FOR DEVELOPMENT, COMMENT THE ABOVE AND UNCOMMENT THE BELOW: --
+  
 -- DROP DATABASE IF EXISTS potionsales;
 
 -- CREATE DATABASE potionsales;

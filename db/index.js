@@ -17,7 +17,7 @@ pool.query('SELECT 1 + 1 AS solution', (err, res) => {
   
 module.exports = pool;
 
-//uncomment below for local/dev
+//TO BE USED LOCALLY: SEE BELOW, AND COMMENT OUT LINES ABOVE
 //create config file with below filled to local enviornment
 // module.exports = {
 //   user: '',
