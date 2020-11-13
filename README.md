@@ -26,7 +26,7 @@ A single page web application to order magic potions -- limited to three units p
 
 ## To view deployed application, visit: 
 https://joanna-wang-magic-potion.herokuapp.com/
-# Note the below:
+#### Note the below:
 ```sh
 * Phone number input must be 10 digits.
 * Zip code input must be 5 digits.
