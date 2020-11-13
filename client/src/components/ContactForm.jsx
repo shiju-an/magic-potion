@@ -20,10 +20,8 @@ const ContactForm = ({
             id='firstNameInput'
             name='firstName'
             type='text' 
-            // placeholder='First Name'
             value={firstName}
             onChange={onChange}
-            // onBlur={validateName}
             onBlur={validateName}
 
           />
@@ -38,7 +36,6 @@ const ContactForm = ({
             id='lastNameInput'
             name='lastName'
             type='text' 
-            // placeholder='Last Name'
             value={lastName}
             onChange={onChange}
             onBlur={validateName}
@@ -54,7 +51,6 @@ const ContactForm = ({
             id='emailInput'
             name='email'
             type='email' 
-            // placeholder='Email Address'
             value={email}
             onBlur={onChange}
           />         
@@ -70,7 +66,6 @@ const ContactForm = ({
             name='phone'
             type='text' 
             maxLength='10'
-            // placeholder='Phone Number'
             value={phone}
             onChange={onChange}
             onBlur={validatePhoneNumber}

@@ -76,16 +76,6 @@ const PaymentForm = ({
         Back
       </button>
     </div>
-    
-    {/* <div className="bottomArrows">
-      <button 
-        id="submit"
-        onClick={handleSubmit}
-        disabled={disableSubmit()}
-      >
-        Order
-      </button>
-    </div> */}
 
   </div>
 );

@@ -5,7 +5,6 @@ import AddressForm from './AddressForm.jsx';
 import ItemForm from './ItemForm.jsx';
 import PaymentForm from './PaymentForm.jsx';
 
-
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -24,17 +23,11 @@ class App extends React.Component {
       ccNum: '',
       expMM: '',
       expYY: '',
-      // alerts: [
-      //   'Please enter a valid quantity',],
       isValidName: false,
-      // isValidEmail: false,
       isValidPhone: false,
-      // isValidStreet1: false,
-      // isValidCity: false,
       isValidState: false,
       isValidZip: false,
       isValidQuantity: false,
-      // isValidTotal: false,
       isValidCcNum: false,
       isValidExpMM: false,
       isValidExpYY: false,
@@ -58,6 +51,7 @@ class App extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   };
 
+//validation
   validateName(e) {
     let value = e.target.value;
     let validChars = /^[ a-zA-Z\-\’]+$/;
@@ -150,8 +144,6 @@ class App extends React.Component {
       this.setState({isValidCcNum: false})
       alert('Please enter a valid credit card number');
     }
-
-    console.log(cardType)
   };
 
   validateExp(e) {
@@ -186,9 +178,8 @@ class App extends React.Component {
     };
   };
 
-  //change to disableSubmit
+//disable buttons
   disableSubmit() {
-    console.log('disabled');
     let {isValidName, isValidPhone, isValidState, isValidZip, isValidQuantity, isValidCcNum, isValidExpMM, isValidExpYY } = this.state;
 
     if (isValidName && isValidPhone && isValidState && isValidZip && isValidQuantity && isValidCcNum && isValidExpMM && isValidExpYY) {
@@ -200,7 +191,6 @@ class App extends React.Component {
 
   disableNext() {
     let {currentPage, isValidName, isValidPhone, isValidState, isValidZip, isValidQuantity } = this.state;
-    console.log('disabled');
     if (currentPage === 0 && isValidQuantity) {
       console.log('enabled');
       return false;
@@ -219,6 +209,7 @@ class App extends React.Component {
     return true;
   }
   
+//handle inputs
   handleInputChange(e) {
     let name = e.target.name;
     let value = e.target.value;
@@ -239,6 +230,7 @@ class App extends React.Component {
       });
   };
 
+//handle buttons
   handleNext(e) {
     e.preventDefault(); 
 
@@ -273,6 +265,7 @@ class App extends React.Component {
       });
   }
 
+  
   render() {
     let { currentPage } = this.state;
 
@@ -326,74 +319,6 @@ class App extends React.Component {
       /> 
     }
   }
-
-
-  //   return (
-  //     <div>
-  //       <h1>magic potion</h1>
-  //       <h3>bubble bubble boil and trouble</h3> 
-
-  //       <ContactForm 
-  //         firstName={this.state.firstName}
-  //         lastName={this.state.lastName}git s
-  //         email={this.state.email}
-  //         phone={this.state.phone}
-  //         onChange={this.handleInputChange}
-  //         validateName={this.validateName}
-  //         validatePhoneNumber={this.validatePhoneNumber}
-  //         handleBack={this.handleBack}
-  //         handleNext={this.handleNext}
-  //         disableNext={this.disableNext}
-  //         /> 
-
-  //       <AddressForm 
-  //         street1={this.state.street1}
-  //         street2={this.state.street2}
-  //         city={this.state.city}
-  //         state={this.state.state}
-  //         zip={this.state.zip}
-  //         onChange={this.handleInputChange}
-  //         validateState={this.validateState}
-  //         validateZip={this.validateZip}
-  //         handleBack={this.handleBack}
-  //         handleNext={this.handleNext}
-  //         disableNext={this.disableNext}
-  //       /> 
-
-  //       <ItemForm 
-  //         quantity={this.state.quantity}
-  //         total={this.state.total}
-  //         onChange={this.handleTotalChange}
-  //         validateQuantity={this.validateQuantity}
-  //         handleNext={this.handleNext}
-  //         disableNext={this.disableNext}
-  //       /> 
-
-  //       <PaymentForm 
-  //         ccNum={this.state.ccNum}
-  //         expMM={this.state.expMM}
-  //         expYY={this.state.expYY}
-  //         onChange={this.handleInputChange}
-  //         validateCCNum={this.validateCCNum}
-  //         validateExp={this.validateExp}
-  //         handleBack={this.handleBack}
-  //         handleNext={this.handleNext}
-  //         handleSubmit={this.handleSubmit}
-  //         disableSubmit={this.disableSubmit}
-  //       /> 
-
-  //       <button 
-  //         onClick={this.handleSubmit}
-  //         disabled={!this.disableSubmit()}
-  //       >
-  //         Order
-  //       </button>
-
-  //     </div>
-  //   )
-  // }
-// }
-
 }
 
 export default App;

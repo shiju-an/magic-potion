@@ -21,7 +21,6 @@ const AddressForm = ({
             id='street1Input'
             name='street1'
             type='text' 
-            // placeholder='Address Line 1'
             value={street1}
             onChange={onChange}
           />
@@ -36,7 +35,6 @@ const AddressForm = ({
             id='street2Input'
             name='street2'
             type='text' 
-            // placeholder='Address Line 2'
             value={street2}   
             onChange={onChange}
           />    
@@ -66,14 +64,10 @@ const AddressForm = ({
               id='cityInput'
               name='city'
               type='text' 
-              // placeholder='City'
               value={city}
               onChange={onChange}
             />    
 
-            {/* <label>
-              State:   
-            </label> */}
             <select 
               id='stateInput'
               name='state'
@@ -86,15 +80,11 @@ const AddressForm = ({
               ))}
             </select>
 
-            {/* <label>
-              Zip Code:
-            </label> */}
             <input 
               id='zipInput'
               name='zip'
               type='text' 
               maxLength='5'
-              // placeholder='Zip Code'
               value={zip}
               onChange={onChange}
               onBlur={validateZip}

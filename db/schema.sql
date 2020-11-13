@@ -4,6 +4,13 @@ CREATE DATABASE heroku_e98030fc61e2c0f;
 
 USE heroku_e98030fc61e2c0f;
 
+-- for dev
+-- DROP DATABASE IF EXISTS potionsales;
+
+-- CREATE DATABASE potionsales;
+
+-- USE potionsales;
+
 CREATE TABLE users (
   id INT NOT NULL AUTO_INCREMENT,
   first_name VARCHAR(500),

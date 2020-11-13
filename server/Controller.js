@@ -25,7 +25,6 @@ const saveOrder = (req, res) => {
     } else if (data[0] && data[0].totalQuantity) {
       res.status(401).send();
     } else {
-      console.log(JSON.stringify(data))
       res.status(201).send(JSON.stringify(data.insertId));
     };
   });

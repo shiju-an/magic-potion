@@ -34,17 +34,14 @@ const saveOrder = (newOrder, callback) => {
     if (err) {
       callback(err);
     } else if (res.length === 0) {
-      console.log('before insert user');
       db.query(insertUserSql, [firstName, lastName, email, phone, street1, street2, city, state, zip, ccNum, expDate], (err) => {
         if(err) {
           callback(err);
         } else {
-          console.log('before select new id')
           db.query(selectId, (err, id) => {
             if (err) {
               callback(err);
             } else {
-              console.log('before insert order');
               db.query(insertOrderSql, [quantity, total, id[0].id], (err, data) => {
                 if(err){
                   callback(err);

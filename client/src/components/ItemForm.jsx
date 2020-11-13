@@ -19,9 +19,6 @@ const ItemForm = ({
       </div>
 
       <div className="itemContainer" id="combineTwo">
-        {/* <label>
-          Item Quantity:
-        </label> */}
         <div className="innerContainer">
           <select 
             id='quantityInput'
@@ -34,13 +31,7 @@ const ItemForm = ({
             ))}
           </select>  
         </div>   
-      {/* </div>
 
-      <div
-        className="itemContainer"
-        id='totalInput'
-        name='total'
-      > */}
         <p id="totalInput" name='total'>${total}</p>
       </div>
       
