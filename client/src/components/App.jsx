@@ -59,10 +59,9 @@ class App extends React.Component {
     if (value.match(validChars)) {
       this.setState({isValidName: true});
     }  
-    else {  
-      this.setState({isValidName: false});
-      alert('Please enter a valid name');
-    };
+
+    this.setState({isValidName: false});
+    // alert('Please enter a valid name');
   };
 
   validatePhoneNumber(e) {
@@ -71,10 +70,10 @@ class App extends React.Component {
 
     if (value.match(validChars)) {
       this.setState({isValidPhone: true});    
-    } else {  
-      this.setState({isValidPhone: false});    
-      alert('Please enter a valid phone number');
-    };
+    } 
+
+    this.setState({isValidPhone: false});    
+    // alert('Please enter a valid phone number');
   };
 
   validateState(e) {
@@ -234,9 +233,29 @@ class App extends React.Component {
   handleNext(e) {
     e.preventDefault(); 
 
-    this.setState({currentPage: this.state.currentPage + 1} , () => {console.log(this.state.currentPage)})
-  };
+    let {currentPage, isValidName, isValidPhone, isValidState, isValidZip, isValidQuantity } = this.state;
 
+    if (currentPage === 0 && isValidName && isValidPhone) {
+      this.setState({currentPage: this.state.currentPage + 1} , () => {console.log(this.state.currentPage)})
+    } else if (!isValidName) {
+      alert('Please enter a valid name');
+    } else {
+      alert('Please enter a valid phone number');
+    }
+    
+    if (currentPage === 1 && isValidPhone && isValidName) {
+        console.log('enabled');
+        return false;
+    } 
+    
+    if (currentPage === 2 && isValidState && isValidZip) {
+        console.log('enabled');
+        return false;    
+    } 
+
+    return true;
+
+  };
 
   handleBack(e) {
     e.preventDefault(); 
