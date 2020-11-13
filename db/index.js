@@ -7,7 +7,7 @@ function handleDisconnect() {
   connection.connect((err) => {
     if(err) {
       console.log('db connection error', err)
-      setTimeOut(handleDisconnect, 2000);
+      setTimeout(handleDisconnect, 2000);
     } else {
       console.log('do you come in potion database')
     }
