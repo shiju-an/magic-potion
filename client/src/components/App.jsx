@@ -104,10 +104,10 @@ class App extends React.Component {
 
     if (value === '0' || value === '') {
       this.setState({isValidQuantity: false});
-      alert('Please enter a valid quantity');
-    } else {
-      this.setState({isValidQuantity: true});
-    }
+      // alert('Please enter a valid quantity');
+    } 
+    
+    this.setState({isValidQuantity: true});
   }
 
   validateCCNum(e) {
@@ -235,7 +235,13 @@ class App extends React.Component {
 
     let {currentPage, isValidName, isValidPhone, isValidState, isValidZip, isValidQuantity } = this.state;
 
-    if (currentPage === 0 && isValidName && isValidPhone) {
+    if (currentPage === 0 && isValidQuantity) {
+      this.setState({currentPage: this.state.currentPage + 1} , () => {console.log(this.state.currentPage)})
+    } else {
+      alert('Please enter a valid quantity');
+    };
+
+    if (currentPage === 1 && isValidName && isValidPhone) {
       this.setState({currentPage: this.state.currentPage + 1} , () => {console.log(this.state.currentPage)})
     } else if (!isValidName) {
       alert('Please enter a valid name');
@@ -243,17 +249,17 @@ class App extends React.Component {
       alert('Please enter a valid phone number');
     }
     
-    if (currentPage === 1 && isValidPhone && isValidName) {
-        console.log('enabled');
-        return false;
-    } 
+    // if (currentPage === 1 && isValidPhone && isValidName) {
+    //     console.log('enabled');
+    //     return false;
+    // } 
     
-    if (currentPage === 2 && isValidState && isValidZip) {
-        console.log('enabled');
-        return false;    
-    } 
+    // if (currentPage === 2 && isValidState && isValidZip) {
+    //     console.log('enabled');
+    //     return false;    
+    // } 
 
-    return true;
+    // return true;
 
   };
 
