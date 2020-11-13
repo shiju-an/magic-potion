@@ -93,6 +93,7 @@ const AddressForm = ({
               id='zipInput'
               name='zip'
               type='text' 
+              maxLength='5'
               // placeholder='Zip Code'
               value={zip}
               onChange={onChange}

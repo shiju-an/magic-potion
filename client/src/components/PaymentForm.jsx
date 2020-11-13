@@ -19,11 +19,11 @@ const PaymentForm = ({
             id='ccNumInput'
             name='ccNum'
             type='text' 
+            maxLength='16'
             placeholder='Credit Card Number'
             value={ccNum}
             onChange={onChange}
             onBlur={validateCCNum}
-            pattern='[0-9]*'
           />
         </div>
 
@@ -40,7 +40,7 @@ const PaymentForm = ({
             value={expMM}
             onChange={onChange}
             onBlur={validateExp}
-            pattern='[0-9]*'
+            maxLength='2'
           /> 
           /20
           <input 
@@ -51,7 +51,7 @@ const PaymentForm = ({
             value={expYY}
             onChange={onChange}
             onBlur={validateExp}
-            pattern='[0-9]*'
+            maxLength='2'
           />
           </div>
         </div>
