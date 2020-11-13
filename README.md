@@ -89,22 +89,22 @@ If the user input does not pass the validation tests, currently the user is noti
 ## API Architecture
 All basic CRUD operations can be handled by the application. However, the application currently utilizes only the POST request. 
 
-POST user input (transaction, total, contact, shipping, payment forms) to DB
 ### POST /api/magic
+POST user input (transaction, total, contact, shipping, payment forms) to DB
 Once form inputs are validated on the client-side and before saving to the DB, the DB query validates the below:
 1. If user does not exist, proceed to save a new user and the incoming transaction. 
 2. If user does exists, check in database whether user's transactions will exceed the maximum of 3 potions per month. 
 3. If user exists and user's transactions do not exceed the maximum, save only the incoming transaction. 
 4. If user exists and user's transactions exceed the maximum, send a 'cannot exceed maximum orders per month' error to client. 
 
-GET user data and transaction data for a specific transaction ID. 
 ### GET /api/magic/:id 
+GET user data and transaction data for a specific transaction ID. 
 
-PATCH/update a fufilled column for a specific transaction ID. 
 ### PATCH /api/magic/:id
+PATCH/update a fufilled column for a specific transaction ID. 
 
-DELETE a specific transaction by its ID but keep the user 
 ### DELETE /api/magic/:id
+DELETE a specific transaction by its ID but keep the user 
 
 ## Known Issues
 * Client-side validation functions are called on the onBlur event handler - this means that certain cases such as auto fill, etc will not be automatically recognized as valid inputs.
