@@ -52,7 +52,7 @@ const ContactForm = ({
             name='email'
             type='email' 
             value={email}
-            onBlur={onChange}
+            onChange={onChange}
           />         
         </div>
 
