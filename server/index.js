@@ -20,9 +20,9 @@ app.patch('/api/magic/:id', Controller.updateOrder);
 
 app.delete('/api/magic/:id', Controller.deleteOrder);
 
-app.use((req, res, next) => {
-  res.redirect("/")
-});
+// app.use((req, res, next) => {
+//   res.redirect("/")
+// });
 
 app.listen(port, () => console.log(`do you come in, port ${port}`));
 
