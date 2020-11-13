@@ -1,8 +1,8 @@
--- DROP DATABASE IF EXISTS potionsales;
+DROP DATABASE IF EXISTS heroku_e98030fc61e2c0f;
 
--- CREATE DATABASE potionsales;
+CREATE DATABASE heroku_e98030fc61e2c0f;
 
--- USE potionsales;
+USE heroku_e98030fc61e2c0f;
 
 CREATE TABLE users (
   id INT NOT NULL AUTO_INCREMENT,
