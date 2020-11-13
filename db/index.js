@@ -1,6 +1,6 @@
 const mysql = require('mysql');
 
-var pool  = mysql.createPool({
+var pool = mysql.createPool({
   connectionLimit: 5,
   host: 'us-cdbr-east-02.cleardb.com',
   user: 'b75352c28ce8dc',
@@ -15,7 +15,7 @@ pool.query('SELECT 1 + 1 AS solution', (err, res) => {
   console.log('potion peddler');
 });
   
-module.export = pool;
+module.exports = pool;
 
 //uncomment below for local/dev
 //create config file with below filled to local enviornment
