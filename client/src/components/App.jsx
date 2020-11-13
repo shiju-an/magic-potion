@@ -59,9 +59,10 @@ class App extends React.Component {
     if (value.match(validChars)) {
       this.setState({isValidName: true});
     }  
-
-    this.setState({isValidName: false});
-    // alert('Please enter a valid name');
+    else {  
+      this.setState({isValidName: false});
+      alert('Please enter a valid name');
+    };
   };
 
   validatePhoneNumber(e) {
@@ -70,10 +71,10 @@ class App extends React.Component {
 
     if (value.match(validChars)) {
       this.setState({isValidPhone: true});    
-    } 
-
-    this.setState({isValidPhone: false});    
-    // alert('Please enter a valid phone number');
+    } else {  
+      this.setState({isValidPhone: false});    
+      alert('Please enter a valid phone number');
+    };
   };
 
   validateState(e) {
@@ -104,10 +105,10 @@ class App extends React.Component {
 
     if (value === '0' || value === '') {
       this.setState({isValidQuantity: false});
-      // alert('Please enter a valid quantity');
-    } 
-    
-    this.setState({isValidQuantity: true});
+      alert('Please enter a valid quantity');
+    } else {
+      this.setState({isValidQuantity: true});
+    }
   }
 
   validateCCNum(e) {
@@ -233,35 +234,9 @@ class App extends React.Component {
   handleNext(e) {
     e.preventDefault(); 
 
-    let {currentPage, isValidName, isValidPhone, isValidState, isValidZip, isValidQuantity } = this.state;
-
-    if (currentPage === 0 && isValidQuantity) {
-      this.setState({currentPage: this.state.currentPage + 1} , () => {console.log(this.state.currentPage)})
-    } else {
-      alert('Please enter a valid quantity');
-    };
-
-    if (currentPage === 1 && isValidName && isValidPhone) {
-      this.setState({currentPage: this.state.currentPage + 1} , () => {console.log(this.state.currentPage)})
-    } else if (!isValidName) {
-      alert('Please enter a valid name');
-    } else {
-      alert('Please enter a valid phone number');
-    }
-    
-    // if (currentPage === 1 && isValidPhone && isValidName) {
-    //     console.log('enabled');
-    //     return false;
-    // } 
-    
-    // if (currentPage === 2 && isValidState && isValidZip) {
-    //     console.log('enabled');
-    //     return false;    
-    // } 
-
-    // return true;
-
+    this.setState({currentPage: this.state.currentPage + 1} , () => {console.log(this.state.currentPage)})
   };
+
 
   handleBack(e) {
     e.preventDefault(); 
